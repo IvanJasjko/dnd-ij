@@ -1,0 +1,5 @@
+package dndij
+
+class Misc {
+
+}

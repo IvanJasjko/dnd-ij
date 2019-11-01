@@ -1,7 +1,10 @@
 package object dndij {
 
-  case class Npc(race: Race, weapon: Weapon, element: Element)
-  case class Race(name: String, health: Int)
-  case class Weapon(wepType: String, dmg: Int)
-  case class Element(name: String, status_effect: String, extra_dmg: Int)
+  // Game
+  case class NDd(n: Int, d: Int)
+  // Combat
+  case class Attack(damage: Int, status: String, miss: Double)
+  // Characters
+  case class Race(name: String, health: Int, Armor: Int, weapon: Weapon)
+
 }

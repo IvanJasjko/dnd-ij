@@ -1,0 +1,6 @@
+package dndij
+
+object ItemGenerator {
+
+
+}

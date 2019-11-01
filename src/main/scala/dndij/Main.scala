@@ -1,10 +1,12 @@
 package dndij
 
-import Dice.roll
+import Combat._
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-    roll(1, 1)
+    val sword = new Weapon("Sniper rifle")
+    println(processAttack(sword))
+
   }
 }
