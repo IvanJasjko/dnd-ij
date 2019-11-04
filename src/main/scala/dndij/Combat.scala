@@ -1,13 +1,18 @@
 package dndij
 
-import Dice.roll
+import Utils._
 
 object Combat {
+
   def processAttack(weapon: Weapon): Attack = {
-    Attack(
-      roll(weapon.baseDamage) + weapon.bonusDamage,
-      weapon.enhancement,
-      (15 - weapon.hit) / 100.0
-    )
+    val missChance = 20
+    if (prob(missChance - weapon.hit)) {
+      val attackDamage = roll(weapon.baseDamage) + weapon.bonusDamage
+      Attack(attackDamage, weapon.enhancement)
+    } else {
+      val attackDamage = 0 // Miss
+      Attack(attackDamage, weapon.enhancement)
+    }
   }
+
 }
