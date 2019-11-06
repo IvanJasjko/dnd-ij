@@ -10,7 +10,7 @@ trait Race {
   val armor: Int
 }
 
-class GameUnit(weapon: Weapon) extends Playable
+class GameUnit(weapon: Weapon) extends Playable //???
   with Enchanted
   with Race {
 

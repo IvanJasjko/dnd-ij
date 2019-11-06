@@ -12,11 +12,13 @@ trait Enhancement {
 
 class Weapon(weaponType: String, element: String = "none") extends Enchanted {
 
+  //Move to trait
   val name: String = element match {
     case "" => weaponType
     case _ => s"${weaponType.capitalize} of ${element.capitalize}"
   }
 
+  //Move wep names to case classes
   val (hit, baseDamage, bonusDamage) = weaponType match {
     case "Axe" => (5, NDs(1, 12), 0)
     case "Scimitar" => (4, NDs(1, 6), 2)
