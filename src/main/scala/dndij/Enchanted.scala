@@ -1,5 +1,0 @@
-package dndij
-
-trait Enchanted {
-
-}

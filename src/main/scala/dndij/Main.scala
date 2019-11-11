@@ -1,12 +1,18 @@
 package dndij
 
-import Combat._
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-    val sword = new Weapon("Axe")
-    println(processAttack(sword))
+
+    for (_ <- 1 to 100) {
+      val thrall = Orc("orc", Axe("axe"))
+      if (thrall.enhancement != "none" && thrall.weapon.enhancement != "none")
+        println(s"${thrall.getName} with ${thrall.weapon.getName}")
+    }
+
+
+
 
   }
 }
