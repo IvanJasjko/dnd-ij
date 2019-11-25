@@ -1,18 +1,12 @@
 package dndij
 
+import Combat._
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-
-    for (_ <- 1 to 100) {
-      val thrall = Orc("orc", Axe("axe"))
-      if (thrall.enhancement != "none" && thrall.weapon.enhancement != "none")
-        println(s"${thrall.getName} with ${thrall.weapon.getName}")
-    }
-
-
-
-
+    val player = Character(Human("good"), SniperRifle("AWP"))
+    val opponent = Character(Orc("evil"), Axe("rugged"))
+    engage(player, opponent)
   }
 }
