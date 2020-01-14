@@ -1,6 +1,7 @@
 package dndij
 
 import scala.util.Random
+import Utils.prob
 
 trait Enchanted {
 
@@ -11,8 +12,7 @@ trait Enchanted {
 
   def enhance(): String = {
     val element = genElement()
-    val chance = Random.nextInt(100)
-    if (chance <= 50)
+    if (prob(50))
       element
     else
       "none"

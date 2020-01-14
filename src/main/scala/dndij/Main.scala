@@ -1,12 +1,12 @@
 package dndij
 
-import Combat._
+import GamePlay._
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-    val player = Character(Human("good"), SniperRifle("AWP"))
-    val opponent = Character(Orc("evil"), Axe("rugged"))
+    val player = Character(Human, SniperRifle, Human.health)
+    val opponent = Character(Orc, Axe, Orc.health)
     engage(player, opponent)
   }
 }

@@ -13,22 +13,22 @@ trait Race extends Enchanted with Name {
   }
 }
 
-case class Orc(desc: String) extends Race {
+object Orc extends Race {
   val name = "orc"
   val (health, armor) = (10, 3)
 }
 
-case class Goblin(desc: String) extends Race {
+object Goblin extends Race {
   val name = "goblin"
   val (health, armor) = (5, 1)
 }
 
-case class HobGoblin(desc: String) extends Race {
+object HobGoblin extends Race {
   val name = "hobgoblin"
   val (health, armor) = (7, 2)
 }
 
-case class Human(desc: String) extends Race {
+object Human extends Race {
   val name = "human"
   val (health, armor) = (15, 3)
 }

@@ -15,7 +15,7 @@ trait Weapon extends Enchanted with Name with Cursed {
 
   def processAttack(): Attack = {
     val missChance = 20
-    if (prob(missChance - hit)) {
+    if (prob(100 - missChance + hit)) {
       val attackDamage = roll(baseDamage) + bonusDamage
       Attack(attackDamage, enhancement)
     } else {
@@ -33,27 +33,27 @@ trait Weapon extends Enchanted with Name with Cursed {
 
 }
 
-case class Axe(desc: String) extends Weapon {
+object Axe extends Weapon {
   val name = "axe"
   val (hit, baseDamage, bonusDamage) = (5, NDs(1, 12), 0)
 }
 
-case class Sword(desc: String) extends Weapon {
+object Sword extends Weapon {
   val name = "sword"
   val (hit, baseDamage, bonusDamage) = (5, NDs(1, 6), 4)
 }
 
-case class Scimitar(desc: String) extends Weapon {
+object Scimitar extends Weapon {
   val name = "scimitar"
   val (hit, baseDamage, bonusDamage) = (4, NDs(1, 6), 2)
 }
 
-case class ShortSword(desc: String) extends Weapon {
+object ShortSword extends Weapon {
   val name = "short sword"
   val (hit, baseDamage, bonusDamage) = (5, NDs(1, 6), 3)
 }
 
-case class SniperRifle(desc: String) extends Weapon {
+object SniperRifle extends Weapon {
   val name = "sniper rifle"
   val (hit, baseDamage, bonusDamage) = (20, NDs(2, 12), 7)
 }

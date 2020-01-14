@@ -4,4 +4,8 @@ trait Playable {
 
 }
 
-case class Character(race: Race, weapon: Weapon) extends Playable
+case class Character(race: Race,
+                      weapon: Weapon,
+                      health: Double,
+                      status: String = "Healthy") extends Playable {
+}

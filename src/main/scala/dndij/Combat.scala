@@ -1,13 +1,10 @@
 package dndij
 
-import scala.annotation.tailrec
+import Utils.prob
+
+case class Attack(damage: Double, status: String)
 
 object Combat {
-
-  def engage(player: Character, npc: Character): Unit = {
-    println(s"${player.race.getName} with ${player.weapon.getName} VS ${npc.race.getName} with ${npc.weapon.getName}")
-    makeTurns(player, npc, HpSummary(player.race.health, npc.race.health, npc))
-  }
 
   def getElementalModifier(weapon: Weapon, race: Race): Double = {
     val weaponElement = weapon.enhancement
@@ -30,24 +27,16 @@ object Combat {
       1.0
   }
 
-  //TODO Failing recursion
-  @tailrec
-  private def makeTurns(player: Character, npc: Character, summary: HpSummary): Character = {
-    if (summary.playerHealth == 0)
-      npc
-    else if (summary.npcHealth == 0)
-      player
-    else {
-      if (summary.attacker == player)
-        makeTurns(player, npc, playTurn(player, npc))
-      else
-        makeTurns(player, npc, playTurn(npc, player))
-    }
+  def takeAttack(character: Character, attack: Attack): Character = {
+    character.copy(
+      health = character.health - attack.damage * character.race.armor * 0.1,
+      status = applyStatus(attack.status))
   }
 
-  private def playTurn(player: Character, npc: Character): HpSummary = {
-    //TODO Add user input etc.
-    HpSummary(player.race.health - 1, npc.race.health - 3, player)
+  private def applyStatus(status: String): String = {
+    if (prob(5))
+      status
+    else
+      "Healthy"
   }
-
 }
