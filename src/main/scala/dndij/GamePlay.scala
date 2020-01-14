@@ -8,7 +8,7 @@ object GamePlay {
   def engage(player: Character, npc: Character): Unit = {
     println(s"${player.race.getName} with ${player.weapon.getName} VS ${npc.race.getName} with ${npc.weapon.getName}")
     val winner = executeTurns(player, npc)
-    println(s"${winner.race.getName} was victorious with ${winner.health} health left and ${winner.status} status!")
+    println(s"\n${winner.race.getName} was victorious with ${winner.health} health left and ${winner.status} status!")
   }
 
   @tailrec
@@ -31,8 +31,8 @@ object GamePlay {
     val newPlayer = takeAttack(player, npcAttack)
     val newNpc = takeAttack(npc, playerAttack)
 
-    println(s"${player.race.getName} hits ${npc.race.getName} for ${npc.health - newNpc.health} damage!")
-    println(s"${npc.race.getName} hits back ${player.race.getName} for ${player.health - newPlayer.health} damage!")
+    println(s"\n${player.race.getName} hits ${npc.race.getName}!")
+    println(s"${npc.race.getName} hits ${player.race.getName} back!")
 
     (newPlayer, newNpc)
   }
