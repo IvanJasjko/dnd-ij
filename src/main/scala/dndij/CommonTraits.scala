@@ -18,6 +18,7 @@ trait Enchanted {
       "none"
   }
   val enhancement: String = enhance()
+
 }
 
 trait Name {

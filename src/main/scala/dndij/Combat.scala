@@ -34,7 +34,7 @@ object Combat {
   }
 
   private def applyStatus(status: String): String = {
-    if (prob(5) && status != "none")
+    if (prob(35) && status != "none")
       status
     else
       "healthy"
