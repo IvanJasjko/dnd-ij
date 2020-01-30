@@ -28,15 +28,28 @@ object Combat {
   }
 
   def takeAttack(character: Character, attack: Attack): Character = {
-    character.copy(
-      health = character.health - attack.damage * character.race.armor * 0.1,
-      status = applyStatus(attack.status))
+    val statusUpdate = applyStatus(attack.status)
+      if (statusUpdate != "none") {
+        character.copy(
+          health = character.health - attack.damage * character.race.armor * 0.1,
+          status = statusUpdate
+        )
+      } else {
+        character.copy(
+          health = character.health - attack.damage * character.race.armor * 0.1
+        )
+      }
+
   }
 
   private def applyStatus(status: String): String = {
     if (prob(35) && status != "none")
       status
     else
-      "healthy"
+      "none"
+  }
+
+  private def processStatus(char: Character, status: String): Character = {
+    char
   }
 }

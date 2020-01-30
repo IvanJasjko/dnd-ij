@@ -24,16 +24,17 @@ object GamePlay {
     println(s"\n${player.race.getName} with ${player.weapon.getName} VS ${npc.race.getName} with ${npc.weapon.getName}")
     val fightOutcome = executeTurns(player, npc)
     val winner = Seq(fightOutcome.player, fightOutcome.npc).maxBy(_.health)
-    println(s"\n${winner.race.getName} was victorious with ${winner.health} health left and ${winner.status} status!")
+    println(s"\n${winner.race.getName} was victorious with ${winner.health} health left")
     fightOutcome
   }
 
   @tailrec
   private def executeTurns(player: Character, npc: Character): Outcome = {
     if (player.health <= 0.0 || npc.health <= 0)
-      Outcome(player, npc)
+      Outcome(player.copy(status = "none"), npc)
     else {
       println(s"\nYour health (${player.health})\nEnemy health (${npc.health})")
+      println(player.status)
       val Outcome(updated_player, updated_npc) = playTurn(player, npc)
       executeTurns(updated_player, updated_npc)
     }
